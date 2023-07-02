@@ -1,0 +1,22 @@
+{
+    "gitConfigUser.profiles": [
+        {
+            "label": "seragsabrysakr",
+            "email": "srag.sabry@gmail.com",
+            "userName": "seragsabrysakr",
+            "selected": true
+        },
+        {
+            "label": "work",
+            "userName": "Sragsakr",
+            "email": "serag@matnsolutions.com",
+            "selected": false
+        },
+        {
+            "label": "personal",
+            "userName": "seragsabrysakr",
+            "email": "srag.sabry@gmail.com",
+            "selected": false
+        }
+    ]
+}

@@ -11,17 +11,17 @@ Widget logo() {
 
 // company name
 Widget compnayName() {
-  return const Text('ALQ', style: TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold));
+  return const Text('Serag Sakr', style: TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold));
 }
 
 // branch name
 Widget branchName() {
-  return const Text('فرع الازدهار', style: TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold));
+  return const Text('الاسكندرية', style: TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold));
 }
 
 // vat no
 Widget vatNo() {
-  return const Text('VAT No.: 34343434443434', style: TextStyle(color: Colors.black, fontSize: 18));
+  return const Text('VAT No.: 2020202020', style: TextStyle(color: Colors.black, fontSize: 18));
 }
 
 // order no
@@ -33,7 +33,7 @@ Widget orderNo() {
     height: 50,
     padding: const EdgeInsets.all(6),
     decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 2)),
-    child: const Text('#210', style: TextStyle(color: Colors.black, fontSize: 26, fontWeight: FontWeight.bold)),
+    child: const Text('300', style: TextStyle(color: Colors.black, fontSize: 26, fontWeight: FontWeight.bold)),
   );
 }
 
@@ -41,7 +41,7 @@ Widget orderNo() {
 Widget cashierNameAndPostingDate() {
   return Container(
     padding: const EdgeInsets.all(6),
-    child: const Text('Pos Pos | 25-05-2012 13:52:12', style: TextStyle(color: Colors.black, fontSize: 18)),
+    child: const Text('Serag| 25-05-2023 13:52:12', style: TextStyle(color: Colors.black, fontSize: 18)),
   );
 }
 
@@ -165,7 +165,7 @@ Widget referenceNoAndPrintTime() {
     mainAxisSize: MainAxisSize.min,
     children: [
       Text(' POS354635403 | 334345434', style: TextStyle(color: Colors.black, fontSize: 18)),
-      Text('25-05-2012 13:52:12', style: TextStyle(color: Colors.black, fontSize: 18)),
+      Text('25-05-2023 13:52:12', style: TextStyle(color: Colors.black, fontSize: 18)),
     ],
   );
 }

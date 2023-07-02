@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Printer Demo',
+      title: 'Printer Demo By Serag Sakr',
       navigatorKey: appNavigatorKey,
       theme: ThemeData(
 
