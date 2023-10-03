@@ -1,89 +1,74 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:printer/priter_services.dart';
+import 'package:printer/network_print_screen.dart';
+import 'package:printer/print_controller.dart';
+import 'package:printer/usb_printing_screen.dart';
+
+GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Printer Demo By Serag Sakr',
+      title: 'Printer Usb Demo By Serag Sakr',
       navigatorKey: appNavigatorKey,
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Printer Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-final ipController = TextEditingController();
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-
-        title: Text(widget.title),
-      ),
-      body: Center(
-
-        child: Column(
-
+      home: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text('Printer  Demo By Serag Sakr'),
+        ),
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                'Enter Printer IP Address',
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  appNavigatorKey.currentState!.push(MaterialPageRoute(
+                      builder: (context) => const NetworkPrintScreen(
+                            title: 'Network Print Screen',
+                          )));
+                },
+                label: const Text('Network Print Screen'),
+                icon: const Icon(Icons.network_check_rounded),
               ),
+            ),
+            const SizedBox(
+              height: 50,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                controller: ipController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'IP Address',
-                ),
-              ),
+              child: ElevatedButton.icon(
+                  onPressed: () {
+                    appNavigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const UspPrintingScreen(
+                              title: 'Usp Printing Screen',
+                            )));
+                  },
+                  icon: const Icon(Icons.usb),
+                  label: const Text('Usp Printing Screen')),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          _print();
-        },
-        tooltip: 'Print',
-        child: const Icon(Icons.print),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
-  }
-
-  void _print() {
-    log(ipController.text);
-    printTest(ipController.text);
   }
 }
