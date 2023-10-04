@@ -1,25 +1,27 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:printer/print_controller.dart';
-import 'package:printer/printer_model.dart';
+import 'package:flutter_pos_printer_platform/flutter_pos_printer_platform.dart';
+import 'package:printer/printing_service/print_controller.dart';
+import 'package:printer/printing_service/printer_model.dart';
 
-class UspPrintingScreen extends StatefulWidget {
-  const UspPrintingScreen({super.key, required this.title});
+class BluetoothPrintingScreen extends StatefulWidget {
+  const BluetoothPrintingScreen({super.key, required this.title});
 
   final String title;
 
   @override
-  State<UspPrintingScreen> createState() => _UspPrintingScreenState();
+  State<BluetoothPrintingScreen> createState() =>
+      _BluetoothPrintingScreenState();
 }
 
-class _UspPrintingScreenState extends State<UspPrintingScreen> {
+class _BluetoothPrintingScreenState extends State<BluetoothPrintingScreen> {
   List<PrinterModel> devices = [];
 
   @override
   void initState() {
     setState(() {
-      PrintController.instance.init();
+      PrintController.instance.init(PrinterType.bluetooth);
     });
     super.initState();
   }
@@ -95,7 +97,8 @@ class _UspPrintingScreenState extends State<UspPrintingScreen> {
                 Expanded(
                   child: ElevatedButton.icon(
                     onPressed: () async {
-                      final dev = await PrintController.instance.scan();
+                      final dev = await PrintController.instance
+                          .scan(PrinterType.bluetooth);
                       setState(() {
                         devices = dev;
                       });

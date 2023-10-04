@@ -1,9 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:printer/network_print_screen.dart';
-import 'package:printer/print_controller.dart';
-import 'package:printer/usb_printing_screen.dart';
+import 'package:printer/screens/bluetooth_printing_screen.dart';
+import 'package:printer/screens/network_print_screen.dart';
+import 'package:printer/printing_service/print_controller.dart';
+import 'package:printer/screens/usb_printing_screen.dart';
 
 GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -65,6 +66,21 @@ class _MyAppState extends State<MyApp> {
                   },
                   icon: const Icon(Icons.usb),
                   label: const Text('Usp Printing Screen')),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton.icon(
+                  onPressed: () {
+                    appNavigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const BluetoothPrintingScreen(
+                              title: 'Bluetooth Printing Screen',
+                            )));
+                  },
+                  icon: const Icon(Icons.bluetooth),
+                  label: const Text('Bluetooth Printing Screen')),
             ),
           ],
         ),

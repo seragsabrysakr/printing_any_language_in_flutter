@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:printer/print_controller.dart';
+import 'package:flutter_pos_printer_platform/flutter_pos_printer_platform.dart';
+import 'package:printer/printing_service/print_controller.dart';
 
 class NetworkPrintScreen extends StatefulWidget {
   const NetworkPrintScreen({super.key, required this.title});
@@ -14,7 +15,7 @@ class _NetworkPrintScreenState extends State<NetworkPrintScreen> {
   @override
   void initState() {
     setState(() {
-      PrintController.instance.init();
+      PrintController.instance.init(PrinterType.network);
     });
     super.initState();
   }

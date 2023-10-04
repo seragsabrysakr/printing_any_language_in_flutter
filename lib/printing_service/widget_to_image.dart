@@ -3,8 +3,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-
-import 'main.dart';
+import 'package:printer/main.dart';
 
 Future<Uint8List?> createImageFromWidget(Widget widget,
     {Duration? wait, Size? logicalSize, Size? imageSize}) async {

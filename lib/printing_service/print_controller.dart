@@ -6,9 +6,9 @@ import 'package:flutter/services.dart';
 import 'package:image/image.dart' as AnotherImage;
 import 'package:flutter_pos_printer_platform/flutter_pos_printer_platform.dart';
 import 'package:esc_pos_utils/esc_pos_utils.dart';
-import 'package:printer/printer_model.dart';
-import 'package:printer/printer_widgets.dart';
-import 'package:printer/widget_to_image.dart';
+import 'package:printer/printing_service/printer_model.dart';
+import 'package:printer/printing_service/printer_widgets.dart';
+import 'package:printer/printing_service/widget_to_image.dart';
 
 class PrintController {
   PrintController._();
@@ -33,7 +33,10 @@ class PrintController {
   var _portController = TextEditingController();
   List<PrinterModel> devices = [];
 
-  init() async {
+  init(PrinterType type) async {
+    defaultPrinterType = type;
+    log('initial  ${defaultPrinterType.name}');
+
     devices = [];
     profile = await CapabilityProfile.load();
     generator = Generator(PaperSize.mm58, profile);
@@ -79,15 +82,17 @@ class PrintController {
     });
   }
 
-  Future<List<PrinterModel>> scan() async {
+  Future<List<PrinterModel>> scan(PrinterType type) async {
+    defaultPrinterType = type;
     devices.clear();
     log('device cleared');
-    _subscription = printerManager
-        .discovery(type: defaultPrinterType, isBle: false)
-        .listen((device) {
+    log('${defaultPrinterType.name}');
+    _subscription =
+        printerManager.discovery(type: type, isBle: _isBle).listen((device) {
       log('New device $device');
       log('New device ${device.name}');
       log('New device ${device.address}');
+      log('New device ${device.operatingSystem}');
 
       devices.add(PrinterModel(
         deviceName: device.name,
