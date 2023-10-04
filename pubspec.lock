@@ -148,7 +148,7 @@ packages:
       path: "."
       ref: HEAD
       resolved-ref: "90864942271d1275959b71552d1daa12fa81d188"
-      url: "https://github.com/seragsabrysakr/flutter_pos_printer_platform.git"
+      url: "https://github.com/seragsabrysakr/flutter_printing.git"
     source: git
     version: "1.4.2"
   flutter_star_prnt:

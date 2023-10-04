@@ -39,7 +39,7 @@ dependencies:
 #  esc_pos_utils:
   image:
   flutter_pos_printer_platform:
-    git: https://github.com/seragsabrysakr/flutter_pos_printer_platform.git
+    git: https://github.com/seragsabrysakr/flutter_printing.git
   esc_pos_utils:
 
 dev_dependencies:
