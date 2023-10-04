@@ -4,9 +4,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image/image.dart' as AnotherImage;
-
+import 'package:flutter_pos_printer_platform/flutter_pos_printer_platform.dart';
 import 'package:esc_pos_utils/esc_pos_utils.dart';
-import 'package:flutter_pos_printer_platform_image_3/flutter_pos_printer_platform_image_3.dart';
 import 'package:printer/printer_model.dart';
 import 'package:printer/printer_widgets.dart';
 import 'package:printer/widget_to_image.dart';
@@ -80,13 +79,15 @@ class PrintController {
     });
   }
 
-  Future<void> scan() async {
+  Future<List<PrinterModel>> scan() async {
     devices.clear();
     log('device cleared');
     _subscription = printerManager
         .discovery(type: defaultPrinterType, isBle: false)
         .listen((device) {
       log('New device $device');
+      log('New device ${device.name}');
+      log('New device ${device.address}');
 
       devices.add(PrinterModel(
         deviceName: device.name,
@@ -97,6 +98,7 @@ class PrintController {
         typePrinter: defaultPrinterType,
       ));
     });
+    return devices;
   }
 
   void setPort(String value) {

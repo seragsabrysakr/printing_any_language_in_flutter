@@ -142,14 +142,24 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.2"
-  flutter_pos_printer_platform_image_3:
+  flutter_pos_printer_platform:
     dependency: "direct main"
     description:
-      name: flutter_pos_printer_platform_image_3
-      sha256: "1e93ed482b4b57857d4774320c715678631d45d5481f39c9a5000430a65228f2"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.2"
+      path: "."
+      ref: HEAD
+      resolved-ref: "90864942271d1275959b71552d1daa12fa81d188"
+      url: "https://github.com/seragsabrysakr/flutter_pos_printer_platform.git"
+    source: git
+    version: "1.4.2"
+  flutter_star_prnt:
+    dependency: transitive
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: f9ade45dc31dd5d9976deb8e14af48389a0edc69
+      url: "https://github.com/yasfdany/flutter_star_prnt.git"
+    source: git
+    version: "2.4.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -189,14 +199,6 @@ packages:
     description:
       name: image
       sha256: "8e9d133755c3e84c73288363e6343157c383a0c6c56fc51afcc5d4d7180306d6"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.3.0"
-  image_v3:
-    dependency: transitive
-    description:
-      name: image_v3
-      sha256: dd9f790f2397dd243a74e606a57780e03e2fb67f372baf587e7780c37bd0258d
       url: "https://pub.dev"
     source: hosted
     version: "3.3.0"
@@ -244,10 +246,26 @@ packages:
     dependency: transitive
     description:
       name: network_info_plus
-      sha256: a0ab54a63b10ba06f5adf8b68171911ca19f607d2224e36d2c827c031cc174d7
+      sha256: "746b4bcc936c1d1887e12ea867dd1e351112d6a4525185d54479eea0aec79785"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.5"
+    version: "2.3.2"
+  network_info_plus_linux:
+    dependency: transitive
+    description:
+      name: network_info_plus_linux
+      sha256: eff8b47a34745a5e341c843972d5a4f4485c8d7542b0afd3ea548f8f160a3550
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.2"
+  network_info_plus_macos:
+    dependency: transitive
+    description:
+      name: network_info_plus_macos
+      sha256: eb9dfa9183c4aec41aa68debcbf771c9a80c7526e70edf3d7b4d968d97f7db05
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.0"
   network_info_plus_platform_interface:
     dependency: transitive
     description:
@@ -256,6 +274,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.3"
+  network_info_plus_web:
+    dependency: transitive
+    description:
+      name: network_info_plus_web
+      sha256: a89a5a1c6aeb5d6a73102d0cba1f3d97950ed0741bd96ef4a6c5b3d6ebdeef07
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
+  network_info_plus_windows:
+    dependency: transitive
+    description:
+      name: network_info_plus_windows
+      sha256: "463ecc0787c0ac9b3a2b75d15e61b6362c4f4d626d00ab963f55e483eea49998"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   nm:
     dependency: transitive
     description:
@@ -398,5 +432,5 @@ packages:
     source: hosted
     version: "6.3.0"
 sdks:
-  dart: ">=3.1.0-185.0.dev <3.3.10"
+  dart: ">=3.1.0-185.0.dev <4.0.0"
   flutter: ">=2.11.0"

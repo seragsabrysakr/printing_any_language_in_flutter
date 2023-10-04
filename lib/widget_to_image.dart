@@ -80,7 +80,7 @@ showSnakeBar(String message) {
     content: Center(
         child: Text(
       message,
-      style: TextStyle(color: Colors.white, fontSize: 6),
+      style: TextStyle(color: Colors.white, fontSize: 20),
     )),
   );
   ScaffoldMessenger.of(context)

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:printer/print_controller.dart';
+import 'package:printer/printer_model.dart';
 
 class UspPrintingScreen extends StatefulWidget {
   const UspPrintingScreen({super.key, required this.title});
@@ -13,6 +14,8 @@ class UspPrintingScreen extends StatefulWidget {
 }
 
 class _UspPrintingScreenState extends State<UspPrintingScreen> {
+  List<PrinterModel> devices = [];
+
   @override
   void initState() {
     setState(() {
@@ -61,21 +64,21 @@ class _UspPrintingScreenState extends State<UspPrintingScreen> {
             const SizedBox(
               height: 50,
             ),
-            SizedBox(
-              height: 500,
+            Expanded(
               child: ListView.builder(
-                  itemCount: PrintController.instance.devices.length,
+                  itemCount: devices.length,
                   itemBuilder: (context, index) {
-                    final item = PrintController.instance.devices[index];
+                    final item = devices[index];
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ListTile(
                         onTap: () {
-                          PrintController.instance.selectDevice(item);
+                          setState(() {
+                            PrintController.instance.selectDevice(item);
+                          });
                         },
-                        leading: Text(item.state.toString()),
-                        title: Text(item.deviceName.toString()),
-                        subtitle: Text(item.vendorId.toString()),
+                        leading: Text("STATE :${item.state}"),
+                        title: Text("Device Name :${item.deviceName}"),
                       ),
                     );
                   }),
@@ -91,8 +94,13 @@ class _UspPrintingScreenState extends State<UspPrintingScreen> {
                 ),
                 Expanded(
                   child: ElevatedButton.icon(
-                    onPressed: () {
-                      PrintController.instance.scan();
+                    onPressed: () async {
+                      final dev = await PrintController.instance.scan();
+                      setState(() {
+                        devices = dev;
+                      });
+                      await Future.delayed(const Duration(seconds: 1));
+                      setState(() {});
                     },
                     icon: const Icon(Icons.qr_code_scanner),
                     label: const Text(
