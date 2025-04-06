@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:printer/priter_services.dart';
 
@@ -17,7 +15,6 @@ class MyApp extends StatelessWidget {
       title: 'Printer Demo By Serag Sakr',
       navigatorKey: appNavigatorKey,
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -36,21 +33,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-final ipController = TextEditingController();
+  final ipController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-
         title: Text(widget.title),
       ),
       body: Center(
-
         child: Column(
-
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Padding(
@@ -69,21 +61,20 @@ final ipController = TextEditingController();
                 ),
               ),
             ),
+            ElevatedButton(
+                onPressed: () {
+                  printImageRaster(ipController.text);
+                },
+                child: const Text('Print Raster Image')),
+            ElevatedButton(
+                onPressed: () {
+                  printImage(ipController.text);
+                },
+                child: const Text('Print  Image')),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          _print();
-        },
-        tooltip: 'Print',
-        child: const Icon(Icons.print),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
-  }
-
-  void _print() {
-    log(ipController.text);
-    printTest(ipController.text);
   }
 }
